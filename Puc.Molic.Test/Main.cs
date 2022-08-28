@@ -8,7 +8,7 @@ namespace Puc.Molic.Test
     public class Main
     {
 
-
+        //test converting object to XML
         [Fact]
         public void TestDiagram()
         {
