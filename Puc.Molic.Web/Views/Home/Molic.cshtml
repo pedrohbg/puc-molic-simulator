@@ -571,22 +571,9 @@ i.arrow-down-dashed:after{
             </div>
             <div class="panel two">
                 <div class="content">
-                    
-
-
-
-
-
-
-
-
-
+    
  <center>
 
-
-       
-
-       
         <div class="tab-content">
 
             @{
@@ -603,16 +590,34 @@ i.arrow-down-dashed:after{
                             <section class="molic">
                             @{
                                 active = string.Empty;
+                                List<int> visitedIds = new List<int>();
+                                string backgroundColor = "#1ABC9C";
+                                int i = 0;
                                 foreach (Node node in subDiagram.Nodes)
                                 {
+                                   
+                                    if (visitedIds.Contains(node.Id))
+                                    {
+                                        backgroundColor = "#FF0000";
+                                    }
+                                    else
+                                    {
+                                        backgroundColor = "#1ABC9C";
+                                    }
+                                    visitedIds.Add(node.Id);
+                                    
+                                    i++;
+                                    
 
                                     <style type="text/css">
-                                    #node_@node.Id:before {
-                                        content: '@node.Id';
-                                    }
-                                        #edge_@node.Id:before {
-                                        content: '@node.Id';
-                                    }
+                                        #@string.Format("node_{0}_{1}_{2}", subDiagram.Id, node.Id, i):before {
+                                            content: '@node.Id';                                       
+                                            background-color: @backgroundColor;
+                                        }
+                                        #@string.Format("node_{0}_{1}_{2}", subDiagram.Id, node.Id, i):before {
+                                            content: '@node.Id';
+                                   
+                                        }
                                     </style>
 
 
@@ -636,17 +641,17 @@ i.arrow-down-dashed:after{
                                     switch (node.Type)
                                     {
                                         case Consts.ElementType.Opening:
-                                            <div class="molic__sources div_object" id="node_@node.Id">
+                                            <div class="molic__sources div_object" id="@string.Format("node_{0}_{1}_{2}", subDiagram.Id, node.Id, i)">
                                                 <div class="circle"></div>
                                             </div>
                                             break;
                                         case Consts.ElementType.SystemProcess:                               
-                                        	<div class="molic__sources div_object" id="node_@node.Id">
+                                        	<div class="molic__sources div_object" id="@string.Format("node_{0}_{1}_{2}", subDiagram.Id, node.Id, i)">
                                                 <div class="square"></div>
 	                                        </div>
                                             break;
                                         case Consts.ElementType.Scene:
-                                            <div class="molic__sources div_object" id="node_@node.Id">
+                                            <div class="molic__sources div_object" id="@string.Format("node_{0}_{1}_{2}", subDiagram.Id, node.Id, i)">
 		                                        <div class="sources div_object">
 			                                        <div class="header">@node.Topic</div>
 			                                        <div class="mainbody">
@@ -656,7 +661,7 @@ i.arrow-down-dashed:after{
 	                                        </div>
                                             break;
                                         case Consts.ElementType.TopicChange:
-                                            <div class="molic__sources div_object" id="node_@node.Id">
+                                            <div class="molic__sources div_object" id="@string.Format("node_{0}_{1}_{2}", subDiagram.Id, node.Id, i)">
                                                 <div class="sources div_object" style="background-color:#ccc">
                                                     <div class="mainbody" style="text-align:center">
                                                         <p>@Html.Raw(MolicHelper.GetNodeDescription(node))</p>
