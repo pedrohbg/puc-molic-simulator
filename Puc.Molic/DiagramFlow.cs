@@ -9,23 +9,6 @@ namespace Puc.Molic
 {
     public class DiagramFlow
     {
-        public Graph GetGraph(Diagram diagram)
-        {
-            // 6 implies the number of nodes in graph
-            var g = new Graph(diagram.Nodes.Count);
-            // Connect node with an edge
-            // First and second parameter indicate node index
-
-            foreach (var edge in diagram.Edges)
-            {
-                int idSource = edge.SourceId - 1;
-                int idTarget = edge.TargetId - 1;
-                g.addEdge(idSource, idTarget);
-            }
-
-            return g;
-
-        }
 
         public GraphV2 GetGraphV2(Diagram diagram)
         {
