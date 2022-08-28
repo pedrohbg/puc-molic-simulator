@@ -26,20 +26,9 @@ namespace Puc.Molic.Web.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Index(FlowModel flowModel)
-        {
-            DiagramService diagramService = new DiagramService();
-            flowModel.DiagramPaths = diagramService.ObterCaminhosDeDiagrama(flowModel.ElementoInicial, flowModel.ElementoFinal);
-            flowModel.Diagram = GetDiagram();
-            return View(flowModel);
-        }
-
-
 
         public IActionResult Molic()
         {
-            DiagramService diagramService = new DiagramService();
             FlowModel flowModel = new FlowModel();
             flowModel.Diagram = GetDiagram();
 
@@ -49,6 +38,10 @@ namespace Puc.Molic.Web.Controllers
         [HttpPost]
         public IActionResult Molic(FlowModel flowModel)
         {
+            if (flowModel.ElementoInicial == 0 || flowModel.ElementoFinal == 0)
+            {
+                return RedirectToAction("Molic");
+            }
             DiagramService diagramService = new DiagramService();
             flowModel.DiagramPaths = diagramService.ObterCaminhosDeDiagrama(flowModel.ElementoInicial, flowModel.ElementoFinal);
             flowModel.Diagram = GetDiagram();
