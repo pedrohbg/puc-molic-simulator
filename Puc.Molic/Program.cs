@@ -6,6 +6,7 @@ namespace Puc.Molic // Note: actual namespace depends on the project name.
 
     internal class Program
     {
+        //test paths from diagram
         static void Main(string[] args)
         {
             DiagramFlow p = new DiagramFlow();

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Puc.Molic.Model
 {
 
-
+	//Graph class and methods to find paths
 	public class GraphV2
 	{
 		// Number of Vertices

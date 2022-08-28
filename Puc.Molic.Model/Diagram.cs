@@ -2,6 +2,7 @@
 
 namespace Puc.Molic.Model
 {
+	//Diagram model
 	public class Diagram
 	{
 		[XmlAttribute]

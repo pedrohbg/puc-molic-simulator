@@ -8,6 +8,7 @@ namespace Puc.Molic.Model
 {
     public class Consts
     {
+        //Diagram element types (nodes and edges)
         public class ElementType
         {
             public const string Opening = "Opening";
@@ -18,7 +19,7 @@ namespace Puc.Molic.Model
             public const string TurnGiving = "TurnGiving";
             public const string BreakdownRecovery = "BreakdownRecovery";
         }
-
+        //Molic variable types
         public class VariableType
         {
             public static string Boolean = "boolean";

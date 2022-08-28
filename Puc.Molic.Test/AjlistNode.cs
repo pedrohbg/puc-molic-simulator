@@ -8,11 +8,10 @@ namespace Puc.Molic.Test
 	public class TestGraph
     {
 
-
+		//testing paths
 		[Fact]
 		public void TestMainX_V2()
 		{
-			// 6 implies the number of nodes in graph
 
 			List<int> list = new List<int>() { 0, 1, 2 };
 
@@ -28,8 +27,7 @@ namespace Puc.Molic.Test
 
 			// Print graph element
 			g.printGraph();
-			// Source 1
-			// Destination 4
+
 			g.allPath(0, 1);
 		}
 

@@ -10,6 +10,7 @@ namespace Puc.Molic
 {
     public class TransformationHelper
     {
+        //convert object Diagram into XML
         public string ToXML(Diagram diagram)
         {
             using (var stringwriter = new System.IO.StringWriter())
@@ -20,6 +21,7 @@ namespace Puc.Molic
             }
         }
 
+        //convert XML diagram into Object Diagram
         public static Diagram LoadFromXMLString(string xmlText)
         {
             using (var stringReader = new System.IO.StringReader(xmlText))
