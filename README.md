@@ -1,0 +1,2 @@
+# puc-molic-simulator
+O projeto tem como objetivo apoiar o designer de IHC na validação de sua a reflexão elaborada em diagrama MoLIC (linguagem de modelagem baseada na Engenharia Semiótica). A validação será feita por meio de uma simulação computadorizada de uma interação de usuário-sistema de um diagrama MoLIC extraído em estrutura XML, seguindo o fluxo descrito no arquivo de modo a interpretar e emular as regras e os conceitos relacionados com a interface do usuário.
