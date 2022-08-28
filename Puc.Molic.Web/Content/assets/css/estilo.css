@@ -1,0 +1,266 @@
+*
+{
+	font-size: 12px;
+}
+
+/*pure table*/
+.marginBottom-0
+{
+	margin-bottom: 0;
+}
+
+.dropdown-submenu
+{
+	position: relative;
+}
+
+	.dropdown-submenu > .dropdown-menu
+	{
+		top: 0;
+		left: 100%;
+		margin-top: -6px;
+		margin-left: -1px;
+		-webkit-border-radius: 0 6px 6px 6px;
+		-moz-border-radius: 0 6px 6px 6px;
+		border-radius: 0 6px 6px 6px;
+	}
+
+	.dropdown-submenu > a:after
+	{
+		display: block;
+		content: " ";
+		float: right;
+		width: 0;
+		height: 0;
+		border-color: transparent;
+		border-style: solid;
+		border-width: 5px 0 5px 5px;
+		border-left-color: #cccccc;
+		margin-top: 5px;
+		margin-right: -10px;
+	}
+
+	.dropdown-submenu:hover > a:after
+	{
+		border-left-color: #555;
+	}
+
+	.dropdown-submenu.pull-left
+	{
+		float: none;
+	}
+
+		.dropdown-submenu.pull-left > .dropdown-menu
+		{
+			left: -100%;
+			margin-left: 10px;
+			-webkit-border-radius: 6px 0 6px 6px;
+			-moz-border-radius: 6px 0 6px 6px;
+			border-radius: 6px 0 6px 6px;
+		}
+
+.navbar-nav > li > a
+{
+	padding-top: 5px !important;
+	padding-bottom: 5px !important;
+}
+
+.navbar
+{
+	min-height: 32px !important;
+}
+
+.pure-table
+{
+	/* Remove spacing between table cells (from Normalize.css) */
+	border-collapse: collapse;
+	border-spacing: 0;
+	empty-cells: show;
+	border: 1px solid #cbcbcb;
+}
+
+	.pure-table caption
+	{
+		color: #000;
+		font: italic 85%/1 arial, sans-serif;
+		padding: 1em 0;
+		text-align: center;
+	}
+
+	.pure-table td,
+	.pure-table th
+	{
+		border-left: 1px solid #cbcbcb; /*  inner column border */
+		border-width: 0 0 0 1px;
+		font-size: inherit;
+		margin: 0;
+		overflow: visible; /*to make ths where the title is really long work*/
+		padding: 6px 12px; /* cell padding */
+	}
+
+		.pure-table td:first-child,
+		.pure-table th:first-child
+		{
+			border-left-width: 0;
+		}
+
+	.pure-table thead
+	{
+		background: #e0e0e0;
+		color: #000;
+		text-align: left;
+		vertical-align: bottom;
+	}
+
+	/*
+striping:
+   even - #fff (white)
+   odd  - #f2f2f2 (light gray)
+*/
+	.pure-table td
+	{
+		background-color: transparent;
+	}
+
+.pure-table-odd td
+{
+	background-color: #f2f2f2;
+}
+
+/* nth-child selector for modern browsers */
+.pure-table-striped tr:nth-child(2n-1) td
+{
+	background-color: #f2f2f2;
+}
+
+/* BORDERED TABLES */
+.pure-table-bordered td
+{
+	border-bottom: 1px solid #cbcbcb;
+}
+
+.pure-table-bordered tbody > tr:last-child td,
+.pure-table-horizontal tbody > tr:last-child td
+{
+	border-bottom-width: 0;
+}
+
+
+/* HORIZONTAL BORDERED TABLES */
+
+.pure-table-horizontal td,
+.pure-table-horizontal th
+{
+	border-width: 0 0 1px 0;
+	border-bottom: 1px solid #cbcbcb;
+}
+
+.pure-table-horizontal tbody > tr:last-child td
+{
+	border-bottom-width: 0;
+}
+
+.container
+{
+	padding: 20px 20px 20px 20px;
+	margin: 0;
+	width: 100%;
+}
+
+.conteudo
+{
+	margin: auto;
+	width: 100%;
+}
+
+.navbar-nav > li
+{
+	font-size: 13px;
+}
+
+.dropdown-menu
+{
+	font-size: 12px;
+}
+
+
+/*estilo em inputs*/
+input[type=text]
+{
+	border: 1px solid #CCC;
+	padding: 2px 5px 2px 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.validation-message
+{
+	font-size: 10px;
+	color: red;
+}
+
+
+.title-legend
+{
+	font-size: 18px;
+	line-height: 20px;
+	margin-bottom: 0;
+	width: inherit; /* Or auto */
+	padding: 0 10px; /* To give a bit of padding on the left and right */
+	border-bottom: none;
+}
+
+fieldset
+{
+	border: 1px solid #ccc; /* 2px groove threedface #444;*/
+	-webkit-box-shadow: 0px 0px 0px 0px #000;
+	box-shadow: 0px 0px 0px 0px #000;
+	min-height: 20px;
+	padding: 19px;
+	margin-bottom: 20px;
+	border: 1px solid #e3e3e3;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+legend
+{
+	font-size: 14px;
+	line-height: 20px;
+	margin-bottom: 0;
+	width: inherit; /* Or auto */
+	padding: 0 10px; /* To give a bit of padding on the left and right */
+	border-bottom: none;
+}
+
+.div-formulario
+{
+	max-width: 500px;
+	display: block;
+	margin: auto;
+}
+
+.center-table
+{
+	margin: 0 auto !important;
+	float: none !important;
+}
+
+.box-container {
+	display: block;
+	
+	background: #f9f9f9;
+	
+	border: 1px solid #d5d5d5;
+	
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+
+	box-shadow:  0px 0px 2px #dadada, inset 0px -3px 0px #e6e6e6;
+}
+
+.field-validation-valid, .field-validation-error {
+	color: #F00;
+}

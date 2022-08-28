@@ -1,0 +1,832 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using Puc.Molic.Model
+@model FlowModel
+
+
+@{
+    ViewData["Title"] = "Simulador Molic";
+    Layout = "";
+}
+
+<!doctype html>
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/dist/bootstrap.fd.css">
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+            font-size: 16px;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Roboto Condensed';
+            margin: 0;
+            padding: 0;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            font-family:Arial;
+    
+        }
+
+        .content {
+            padding: 2rem;
+            height: 100%;
+            overflow-x: hidden;
+            min-width: 450px;
+        }
+
+        header {
+            min-height: 50px;
+            background-color: #000;
+            color: #fff;
+            padding: 15px;
+        }
+
+
+        #panelContainer {
+            display: flex;
+            flex-direction: row;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .panel {
+            position: relative;
+      
+        }
+        .one {
+
+                  width: 47%;
+        }
+        .two {
+
+                  width: 53%;
+        }
+        .slider {
+            //z-index: 999999;
+            display: block;
+            position: absolute;
+            width: 5px;
+            background-color: #1ABC9C;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            overflow: visible;
+            user-select: none;
+        }
+
+            .slider::before {
+                content: "";
+                position: absolute;
+                left: 0.25rem;
+                top: 50%;
+                height: 1.5rem;
+                width: 0.5rem;
+                background-color: #1ABC9C;
+                cursor: col-resize;
+            }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@@import url("https://fonts.googleapis.com/css?family=Mukta:300,400,700");
+.circle {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background: black;
+    margin-top:4px;	
+}
+
+.square {
+    width: 50px;
+    height: 50px;
+    background: black;
+	margin-top:4px;	
+}
+
+.tooltip,
+.molic__sources:before,
+.molic__build:before,
+.molic__deploy:before {
+  position: absolute;
+  right: -20px;
+  bottom: 80%;
+  color: #fff;
+  background: #ffb238;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 22.5px;
+}
+.card,
+.molic__sources .div_object,
+.molic__build .div_object {
+  background: #fff;
+  padding: 1px;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px #e6e6e6;
+
+  border-radius: 20px;
+  border: 2px solid #000;
+
+  width: 240px;
+  text-align: center;
+
+}
+
+.molic {
+
+  background: #fff;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+
+#circulo:before {
+  content: 'Circulo';
+}
+
+#quadrado:before {
+  content: 'Quadrado';
+}
+
+.molic__sources .div_object {
+  text-align: left;
+  //margin: 0 1rem;
+}
+.molic__build {
+  padding: 10vh 10vw;
+  border-radius: 8px;
+  background: #f9f9f9;
+  position: relative;
+}
+.molic__build:before {
+  content: 'build';
+}
+.molic__build .div_object {
+  margin: 2rem 0;
+}
+.molic__deploy {
+  background: #f9f9f9;
+
+  border-radius: 5px;
+  position: relative;
+}
+.molic__deploy:before {
+  content: 'Id: 2';
+}
+
+@@media (max-width: 700px) {
+  .molic__sources {
+    flex-direction: column;
+  }
+  .molic__sources .div_object {
+    margin: 1rem 0;
+  }
+}
+@@-moz-keyframes animateline {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -5rem;
+  }
+}
+@@-webkit-keyframes animateline {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -5rem;
+  }
+}
+@@-o-keyframes animateline {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -5rem;
+  }
+}
+@@keyframes animateline {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -5rem;
+  }
+}
+
+i.arrow-down{
+  color: #000;
+  width:  0.2em;
+  height:  6em;
+  display:  inline-block;
+  position:  relative;
+  
+/*background: repeating-linear-gradient(
+  0deg,
+  #000,
+  #000 10px,
+  #FFF 10px,
+  #FFF 20px
+);*/
+background: #000;
+  
+  vertical-align: top;
+} 
+i.arrow-down:after{
+  border-right:  0.3em solid transparent;
+  border-left:  0.3em solid transparent;
+  border-top:  0.7em solid currentColor;
+  position:  absolute;
+  content:  "";
+  bottom:  -0.2em;
+  left:  -0.19em;
+}
+
+
+i.arrow-down-dashed{
+  color: #000;
+  width:  0.2em;
+  height:  6em;
+  display:  inline-block;
+  position:  relative;
+  
+ background: repeating-linear-gradient(
+  0deg,
+  #000,
+  #000 10px,
+  #FFF 10px,
+  #FFF 20px
+ );
+  
+  vertical-align: top;
+} 
+i.arrow-down-dashed:after{
+  border-right:  0.3em solid transparent;
+  border-left:  0.3em solid transparent;
+  border-top:  0.7em solid currentColor;
+  position:  absolute;
+  content:  "";
+  bottom:  -0.2em;
+  left:  -0.19em;
+}
+
+.topicChange {
+
+  !importantackground: #CFCFCF;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.molic__sources {
+  display: flex;
+  border-radius: 8px;
+
+  background: #FFF;
+  position: relative;
+  margin-top:4px;
+}
+
+
+
+
+
+.mainbody,
+.header,
+
+.mainbody {
+    margin-top: 0;
+    max-height: 388px;
+    overflow: auto;
+    padding:4px;
+}
+.header {
+	
+  text-align: center;
+  margin-top:5px;
+
+    border-bottom: 1px solid #000;
+    min-height: 30px;
+}
+
+
+
+.modal-dialog{
+    z-index:999999 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Simulador Molic</title>
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="jquery.slider.js?v2"></script>
+    <style>
+        #carbonads a {
+            color: #fff;
+            text-decoration: none
+        }
+
+            #carbonads a:hover {
+                color: #fff
+            }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            
+      
+                <div class="row" >
+                    <div class="col-md-6" style="line-height:30px">Simulador Molic </div>
+                      <div class="col-md-6" style="text-align: right;">
+                        <div class="float-right">
+                        @if (!Context.Session.Keys.Contains("molic_diagram"))
+                        {
+                             <span>Favor carregar XML Molic...&nbsp;</span>      
+                        }
+                        else
+                        {
+                            <span>@Model.Diagram.FileName &nbsp;</span>    
+                        }
+                        
+                          <button id="open_btn" class="btn btn-primary">Carregar diagrama XML</button>
+                        </div>
+                    </div>
+                </div>
+        
+        </header>
+        <div id="panelContainer">
+            <div class="panel one">
+                <div class="content">
+
+                    <div class="container">
+                        <div class="form-group">
+                        <div class="row" style="background-color: #f0f7f0; max-width:600px; padding: 5px 5px 15px 5px; border: 1px solid #ccc">
+                            <form method="post" action="/Home/Molic">
+
+
+
+      
+      
+          
+                                    <table style="border:none">
+                                        <tr>
+                                            <td>
+                                                <label>Elemento inicial:</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+
+     
+                                                 <select name="ElementoInicial" class="form-select" aria-label="Default select example" style="width:590px; border: 1px solid #ccc">
+                                                    <option selected>Selecione a origem</option>
+                                                    @if (Model.Diagram?.Nodes != null)
+                                                    {
+                                                        foreach (Node node in Model.Diagram?.Nodes)
+                                                        {
+                              
+                                                            if (Model.ElementoInicial == node.Id)
+                                                            {
+                                                                <option value="@node.Id" selected> @MolicHelper.GetNodeTitleForSelectionBox(node)</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value="@node.Id"> @MolicHelper.GetNodeTitleForSelectionBox(node)</option>
+                                                            }                                                        
+                                                        }
+                                                    }
+                                                
+
+                                                </select>
+                                              
+                                            </td>
+                                        </tr>
+
+                                          <tr>
+                                              <td>
+                                                  <br />
+                                                  <label>Elemento final:</label>
+                                              </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                  <select name="ElementoFinal" class="form-select" aria-label="Default select example" style="width:590px;border: 1px solid #ccc"> 
+                                                                                <option selected>Selecione o destino</option>
+                                                                                @if (Model.Diagram?.Nodes != null)
+                                                                                {
+                                                                                    foreach (Node node in Model.Diagram?.Nodes)
+                                                                                    {
+                                                          
+                                                                                        if (Model.ElementoFinal == node.Id)
+                                                                                        {
+                                                                                            <option value="@node.Id" selected>@MolicHelper.GetNodeTitleForSelectionBox(node)</option>
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <option value="@node.Id">@MolicHelper.GetNodeTitleForSelectionBox(node)</option>
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            
+                                                     </select>
+
+                                            </td>
+                                        </tr>
+                                            <tr>
+                                            <td>
+                                          
+                                                <button type="submit" class="btn-success" style="margin-top:15px;border: 1px solid #ccc">Obter caminhos</button>
+                                                
+  
+
+                                                </td>                                                
+                                                </tr>
+                                    </table>
+                                   
+                                   
+
+                            </form>
+                        </div>
+                        </div>
+                        <hr />
+                        
+                        <div class="row">
+                                        <div class='row'>
+                                            <div class='col-md-4'>
+                                                <ul class='nav nav-pills'>
+                                                    @{
+                                                        string active = "active";
+                                                    }
+                                                    @foreach (Diagram subDiagram in Model.DiagramPaths)
+                                                    {
+                                                        <li class='@active'><a data-toggle='tab' href='#caminho_@subDiagram.Id'>@string.Format("Caminho #{0} ({1})", subDiagram.Id, subDiagram.Name)</a></li>
+                                                        active = string.Empty;
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                        </div>
+
+
+                    </div>
+                    
+
+
+                </div>
+
+    
+
+
+
+            </div>
+            <div class="panel two">
+                <div class="content">
+                    
+
+
+
+
+
+
+
+
+
+ <center>
+
+
+       
+
+       
+        <div class="tab-content">
+
+            @{
+                active = "active";
+            }
+            @foreach (Diagram subDiagram in Model.DiagramPaths)
+            {
+                
+                Node previousNode = null;
+
+                <div id='caminho_@subDiagram.Id' class='tab-pane fade in @active'>
+                    <div class='row'>
+                        <center>
+                            <section class="molic">
+                            @{
+                                active = string.Empty;
+                                foreach (Node node in subDiagram.Nodes)
+                                {
+
+                                    <style type="text/css">
+                                    #node_@node.Id:before {
+                                        content: '@node.Id';
+                                    }
+                                        #edge_@node.Id:before {
+                                        content: '@node.Id';
+                                    }
+                                    </style>
+
+
+                                    if (previousNode != null)
+                                    {
+
+                                        Edge edge = subDiagram.Edges.Where(x => x.SourceId == previousNode.Id && x.TargetId == node.Id).FirstOrDefault();
+
+                                        switch (edge.Type)
+                                        {
+                                            case Consts.ElementType.BreakdownRecovery:
+                                                <i class="arrow-down-dashed"><div  style="width:250px; height:40px;padding-left:20px; position:relative; padding-top:20px; line-height: 40px; text-align:left; line-height:20px; font-size:14px">@Html.Raw(MolicHelper.GetEdgeDescription(edge))</div></i>
+                                                break;
+                                            case Consts.ElementType.TurnGiving:
+                                                <i class="arrow-down" > <div  style="width:250px; height:40px;padding-left:20px; position:relative; padding-top:20px; line-height: 40px; text-align:left; line-height:20px; font-size:14px">@Html.Raw(MolicHelper.GetEdgeDescription(edge))</div></i>
+                                                break;
+                                        }
+                                    }
+                                    previousNode = node;
+
+                                    switch (node.Type)
+                                    {
+                                        case Consts.ElementType.Opening:
+                                            <div class="molic__sources div_object" id="node_@node.Id">
+                                                <div class="circle"></div>
+                                            </div>
+                                            break;
+                                        case Consts.ElementType.SystemProcess:                               
+                                        	<div class="molic__sources div_object" id="node_@node.Id">
+                                                <div class="square"></div>
+	                                        </div>
+                                            break;
+                                        case Consts.ElementType.Scene:
+                                            <div class="molic__sources div_object" id="node_@node.Id">
+		                                        <div class="sources div_object">
+			                                        <div class="header">@node.Topic</div>
+			                                        <div class="mainbody">
+				                                        <p>@Html.Raw(MolicHelper.GetNodeDescription(node))</p>
+			                                        </div>
+		                                        </div>
+	                                        </div>
+                                            break;
+                                        case Consts.ElementType.TopicChange:
+                                            <div class="molic__sources div_object" id="node_@node.Id">
+                                                <div class="sources div_object" style="background-color:#ccc">
+                                                    <div class="mainbody" style="text-align:center">
+                                                        <p>@Html.Raw(MolicHelper.GetNodeDescription(node))</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            break;
+                                    }
+                                }
+                            }
+                            </section>
+                        </center>
+                    </div>
+                </div>
+            }
+
+
+
+        </div>
+
+    </center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <span class="slider"></span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+        (function($) {
+            $(function() {
+            var isMouseDown = false,
+                $panelOne = $(".panel.one"),
+                $panelTwo = $(".panel.two"),
+                $panelContainer = $panelOne.parent(),
+                getParentWidth = function() {
+                return $panelContainer.width();
+                },
+                mouseMoveHandler = function(e) {
+                if (!isMouseDown) return;
+
+                var clientX = e.clientX || (e.touches && e.touches[0].clientX);
+                if(isNaN(clientX))
+                    return;
+
+
+                var width = (clientX / getParentWidth()) * 100;
+
+                // don't allow a value that's smaller than zero;
+                width = width < 0 ? 0 : width;
+
+                // apply size to panel 1
+                $panelOne.css({ width: width + "%" });
+
+                // apply size to panel 2
+                $panelTwo.css({ width: 100 - width + "%" });
+                };
+
+            // mouseDown event
+            $(".slider").on("mousedown touchstart", function() {
+                // only bind a the mouseMove handler on the first cycle
+                !isMouseDown && $panelContainer.on("mousemove touchmove", mouseMoveHandler);
+                isMouseDown = true;
+            });
+
+            $(window).on("mouseup touchend", function() {
+                isMouseDown = false;
+                // detach then mouseMove handler
+                $panelContainer.off("mousemove touchmove");
+            });
+            });
+        })(jQuery);
+    </script>
+
+    <script type="text/javascript">
+        <!--
+        google_ad_client = "ca-pub-2783044520727903";
+        /* jQuery_demo */
+        google_ad_slot = "2780937993";
+        google_ad_width = 728;
+        google_ad_height = 90;
+        //-->
+    </script>
+    <script type="text/javascript"
+            src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+    </script>
+
+
+
+
+    <script>
+        try {
+          fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function(response) {
+            return true;
+          }).catch(function(e) {
+            var carbonScript = document.createElement("script");
+            carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
+            carbonScript.id = "_carbonads_js";
+            document.getElementById("carbon-block").appendChild(carbonScript);
+          });
+        } catch (error) {
+          console.log(error);
+        }
+    </script>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script src="/dist/bootstrap.fd.js"></script>
+        <script type="text/javascript">
+        $("#open_btn").click(function() {
+            $.FileDialog({multiple: true}).on('files.bs.filedialog', function(ev) {
+                var files = ev.files;
+                var text = "Carregado arquivo ";
+                files.forEach(function(f) {
+                    text += "'" +f.name+ "' ";
+                });
+                $("#output").html(text);
+            }).on('cancel.bs.filedialog', function(ev) {
+                //$("#output").html("Pendente carregar aquivo");
+            });
+        });
+        </script>
+
+        
+
+</body>
+</html>
