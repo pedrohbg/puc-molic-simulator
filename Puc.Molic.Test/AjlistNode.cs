@@ -16,7 +16,7 @@ namespace Puc.Molic.Test
 			List<int> list = new List<int>() { 0, 1, 2 };
 
 
-			var g = new GraphV2(list);
+			var g = new DiagramGraph(list);
 			// Connect node with an edge
 			// First and second parameter indicate node index
 			g.addEdge(0, 1);

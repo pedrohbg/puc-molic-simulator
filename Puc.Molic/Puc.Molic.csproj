@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Puc.Molic.Model\Puc.Molic.Model.csproj" />
+    <ProjectCapability Include="CSharp;Managed;ClassDesigner" />
   </ItemGroup>
 
 </Project>

@@ -7,11 +7,11 @@ using System.Xml.Serialization;
 
 namespace Puc.Molic.Web.Controllers
 {
-    public class HomeController : Controller
+    public class MolicController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<MolicController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public MolicController(ILogger<MolicController> logger)
         {
             _logger = logger;
         }

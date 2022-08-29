@@ -22,7 +22,7 @@ $.FileDialog = function FileDialog(userOptions) {
                                 options.title,
             "                </h4>",
             "            </div>",
-            "           <form method='post' action='/Home/Upload'>",
+            "           <form method='post' action='/Molic/Upload'>",
             "            <div class='modal-body'>",
             "                <input type='file' name='arquivo' />",
             "                <div class='bfd-dropfield'>",

@@ -8,13 +8,13 @@ namespace Puc.Molic.Model
 {
 
 	//Graph class and methods to find paths
-	public class GraphV2
+	public class DiagramGraph
 	{
 		// Number of Vertices
 		public List<string> Paths { get; set; }
 		
 		public List<VerticesV2> Nodes { get; set; }
-		public GraphV2(List<int> nodeIds)
+		public DiagramGraph(List<int> nodeIds)
 		{
 			Paths = new List<string>();
 

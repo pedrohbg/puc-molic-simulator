@@ -41,7 +41,7 @@ namespace Puc.Molic.Web
         public List<string> ObterCaminhos(int startNodeId, int endNodeId)
         {
             DiagramFlow diagramFlow = new DiagramFlow();
-            GraphV2 g = diagramFlow.GetGraphV2(diagramFlow.GetDiagram());
+            DiagramGraph g = diagramFlow.GetGraphV2(diagramFlow.GetDiagram());
 
             g.allPath(startNodeId, endNodeId);
 

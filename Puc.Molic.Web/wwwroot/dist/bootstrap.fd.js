@@ -12,7 +12,7 @@
                 "                <h4 class='modal-title'>", o.title,
                 "                </h4>",
                 "            </div>",
-                "            <form method='post' action='/Home/Upload' enctype='multipart/form-data'>",
+                "            <form method='post' action='/Molic/Upload' enctype='multipart/form-data'>",
                 "            <div class='modal-body'>",
                 "                <input type='file' name='file' />",
                 "                <div class='bfd-dropfield'>",

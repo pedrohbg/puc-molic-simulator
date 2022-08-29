@@ -10,7 +10,7 @@ namespace Puc.Molic
     public class DiagramFlow
     {
         //get graph from diagram
-        public GraphV2 GetGraphV2(Diagram diagram)
+        public DiagramGraph GetGraphV2(Diagram diagram)
         {
             List<int> list = new List<int>();
             foreach (var edge in diagram.Edges)
@@ -18,7 +18,7 @@ namespace Puc.Molic
                 list.Add(edge.Id);
             }
 
-            var g = new GraphV2(list);
+            var g = new DiagramGraph(list);
 
             foreach (var edge in diagram.Edges)
             {
