@@ -5,6 +5,8 @@ using System.Linq;
 
 namespace Puc.Molic.Test
 {
+    //Testing file Conversion and Object transformation
+    //Author: Pedro Henrique Bof Gerico
     public class ConversionTest
     {
 

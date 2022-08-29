@@ -2,9 +2,11 @@
 
 namespace Puc.Molic.Web
 {
+    //Service class for the Puc.Molic.Web project
+    //Author: Pedro Henrique Bof Gerico
     public class DiagramService
     {
-        //get all possible diagram paths and create subdiagrams
+        //get all possible diagram paths and create subdiagrams  
         public List<Diagram> GetDiagramPaths(Diagram diagram, int startNodeId, int endNodeId)
         {
             DiagramFlow diagramFlow = new DiagramFlow();

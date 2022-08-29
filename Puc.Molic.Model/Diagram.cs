@@ -3,6 +3,7 @@
 namespace Puc.Molic.Model
 {
 	//Diagram model
+	//Author: Pedro Henrique Bof Gerico
 	public class Diagram
 	{
 		[XmlAttribute]

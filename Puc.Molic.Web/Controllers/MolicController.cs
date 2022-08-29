@@ -7,6 +7,8 @@ using System.Xml.Serialization;
 
 namespace Puc.Molic.Web.Controllers
 {
+    //Main controller for Molic page
+    //Author: Pedro Henrique Bof Gerico
     public class MolicController : Controller
     {
         private readonly ILogger<MolicController> _logger;

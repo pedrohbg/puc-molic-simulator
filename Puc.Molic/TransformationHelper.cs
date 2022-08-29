@@ -8,6 +8,8 @@ using System.Xml.Serialization;
 
 namespace Puc.Molic
 {
+    //Serializers and deserializers for XML to Object
+    //Author: Pedro Henrique Bof Gerico
     public class TransformationHelper
     {
         //convert object Diagram into XML

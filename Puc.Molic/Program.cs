@@ -1,12 +1,13 @@
 ﻿
 using Puc.Molic.Model;
 
-namespace Puc.Molic // Note: actual namespace depends on the project name.
-{
-
+namespace Puc.Molic 
+{        
+    //test paths from diagram with Windows Console Application
+    //Author: Pedro Henrique Bof Gerico
     internal class Program
     {
-        //test paths from diagram
+
         static void Main(string[] args)
         {
             DiagramFlow p = new DiagramFlow();

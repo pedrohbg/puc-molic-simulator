@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace Puc.Molic
 {
+    //Class with methods for managing transformation from Molic Diagram to Graph
+    //Author: Pedro Henrique Bof Gerico
     public class DiagramFlow
     {
         //get graph from diagram

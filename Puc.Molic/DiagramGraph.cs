@@ -8,6 +8,7 @@ namespace Puc.Molic.Model
 {
 
 	//Graph class and methods to find paths
+	//Author: Pedro Henrique Bof Gerico
 	public class DiagramGraph
 	{
 		// Number of Vertices

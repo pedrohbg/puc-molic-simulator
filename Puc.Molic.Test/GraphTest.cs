@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using Xunit;
 namespace Puc.Molic.Test
 {
-
+	//Testing graph algorithm
+	//Author: Pedro Henrique Bof Gerico
 	public class TestGraph
     {
 

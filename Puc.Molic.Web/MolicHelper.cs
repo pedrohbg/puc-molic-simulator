@@ -3,6 +3,8 @@ using System.Text;
 
 namespace Puc.Molic.Web
 {
+    //Helper class with HTML helper methods for the diagram presentation
+    //Author: Pedro Henrique Bof Gerico
     public class MolicHelper
     {
         //get edge information

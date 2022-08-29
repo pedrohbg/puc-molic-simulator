@@ -3,6 +3,7 @@
 namespace Puc.Molic.Web.Models
 {
     //view model for the main Molic page
+    //Author: Pedro Henrique Bof Gerico
     public class FlowModel
     {
         public Diagram Diagram { get; set; }

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Puc.Molic.Model
 {
+    //constants for molic model
+    //Author: Pedro Henrique Bof Gerico
     public class Consts
     {
         //Diagram element types (nodes and edges)
