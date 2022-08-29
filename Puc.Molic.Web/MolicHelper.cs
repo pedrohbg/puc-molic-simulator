@@ -5,6 +5,7 @@ namespace Puc.Molic.Web
 {
     public class MolicHelper
     {
+        //get edge information
         public static string GetEdgeDescription(Edge edge)
         {
             StringBuilder sb = new StringBuilder();
@@ -48,6 +49,7 @@ namespace Puc.Molic.Web
             return sb.ToString();
         }
 
+        //get formatted node information (scene) 
         public static string GetNodeDescription(Node node)
         {
             StringBuilder sb = new StringBuilder();
@@ -94,6 +96,7 @@ namespace Puc.Molic.Web
             return sb.ToString();
         }
 
+        //get structured option for the select box
         public static string GetNodeTitleForSelectionBox(Node node)
         {
             

@@ -2,6 +2,7 @@
 
 namespace Puc.Molic.Web
 {
+    //class to manipulate complex object sessions
     public static class SessionExtensions
     {
         public static void SetObject(this ISession session, string key, object value)

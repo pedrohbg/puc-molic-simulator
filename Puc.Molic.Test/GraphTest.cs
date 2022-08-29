@@ -10,9 +10,9 @@ namespace Puc.Molic.Test
 
 		//testing paths
 		[Fact]
-		public void TestMainX_V2()
+		public void TestPathAlgorithm()
 		{
-
+			//create node list
 			List<int> list = new List<int>() { 0, 1, 2 };
 
 
@@ -28,7 +28,11 @@ namespace Puc.Molic.Test
 			// Print graph element
 			g.printGraph();
 
+			//Execute path algorithm
 			g.allPath(0, 1);
+
+			Assert.True(g.Paths.Contains("0,1,2,1"));
+			Assert.True(g.Paths.Contains("0,1"));
 		}
 
 

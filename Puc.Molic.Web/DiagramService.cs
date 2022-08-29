@@ -4,12 +4,13 @@ namespace Puc.Molic.Web
 {
     public class DiagramService
     {
-        public List<Diagram> ObterCaminhosDeDiagrama(int startNodeId, int endNodeId)
+        //get all possible diagram paths and create subdiagrams
+        public List<Diagram> GetDiagramPaths(Diagram diagram, int startNodeId, int endNodeId)
         {
             DiagramFlow diagramFlow = new DiagramFlow();
-            var diagram = diagramFlow.GetDiagram();
+            
             List<Diagram> subDiagrams = new List<Diagram>();
-            List<string> paths = ObterCaminhos(startNodeId, endNodeId);
+            List<string> paths = GetPaths(diagram, startNodeId, endNodeId);
             int subDiagramId = 1;
             foreach (var stringPath in paths)
             {
@@ -38,21 +39,16 @@ namespace Puc.Molic.Web
             return subDiagrams;
         }
 
-        public List<string> ObterCaminhos(int startNodeId, int endNodeId)
+        //get all possible diagram paths by ids
+        public List<string> GetPaths(Diagram diagram, int startNodeId, int endNodeId)
         {
             DiagramFlow diagramFlow = new DiagramFlow();
-            DiagramGraph g = diagramFlow.GetGraphV2(diagramFlow.GetDiagram());
+            DiagramGraph g = diagramFlow.GetGraphV2(diagram);
 
             g.allPath(startNodeId, endNodeId);
 
             return g.Paths.OrderBy(x => x.Length).ToList();
 
-        }
-
-        internal Diagram GetDiagram()
-        {
-            DiagramFlow diagramFlow = new DiagramFlow();
-            return diagramFlow.GetDiagram();
         }
     }
 }

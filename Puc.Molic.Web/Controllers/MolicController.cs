@@ -21,20 +21,16 @@ namespace Puc.Molic.Web.Controllers
             return RedirectToAction("Molic");
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-
+        //loading action
         public IActionResult Molic()
         {
             FlowModel flowModel = new FlowModel();
-            flowModel.Diagram = GetDiagram();
+            flowModel.Diagram = GetDiagramFromSession();
 
             return View(flowModel);
         }
 
+        //search action
         [HttpPost]
         public IActionResult Molic(FlowModel flowModel)
         {
@@ -43,11 +39,14 @@ namespace Puc.Molic.Web.Controllers
                 return RedirectToAction("Molic");
             }
             DiagramService diagramService = new DiagramService();
-            flowModel.DiagramPaths = diagramService.ObterCaminhosDeDiagrama(flowModel.ElementoInicial, flowModel.ElementoFinal);
-            flowModel.Diagram = GetDiagram();
+            Diagram diagram = GetDiagramFromSession();
+            flowModel.DiagramPaths = diagramService.GetDiagramPaths(diagram, flowModel.ElementoInicial, flowModel.ElementoFinal);
+            flowModel.Diagram = diagram;
 
             return View(flowModel);
         }
+
+        //error handling
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -55,7 +54,7 @@ namespace Puc.Molic.Web.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-
+        //upload method to save XML in the session
         [HttpPost]
         public IActionResult Upload(IFormFile file)
         {
@@ -83,7 +82,8 @@ namespace Puc.Molic.Web.Controllers
             return RedirectToAction("Molic");
         }
 
-        private Diagram GetDiagram()
+        //Session object - diagram uploaded in session
+        private Diagram GetDiagramFromSession()
         {
             Diagram diagram = HttpContext.Session.GetObject<Diagram>("molic_diagram");
             

@@ -2,6 +2,7 @@
 
 namespace Puc.Molic.Web.Models
 {
+    //view model for the main Molic page
     public class FlowModel
     {
         public Diagram Diagram { get; set; }

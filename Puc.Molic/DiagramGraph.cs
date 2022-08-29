@@ -12,7 +12,7 @@ namespace Puc.Molic.Model
 	{
 		// Number of Vertices
 		public List<string> Paths { get; set; }
-		
+		//nodes list
 		public List<VerticesV2> Nodes { get; set; }
 		public DiagramGraph(List<int> nodeIds)
 		{
@@ -26,11 +26,13 @@ namespace Puc.Molic.Model
 			}
 		}
 
+		//query to get node by id
 		public VerticesV2 GetNodeById(int id)
         {
 			return Nodes.Where(x => x.Id == id).FirstOrDefault();
 		}
 
+		//query to get visited nodes
 		public VisitedNode GetVisitedNodeById(List<VisitedNode> visitedNodeList, int id)
 		{
 			return visitedNodeList.Where(x => x.Id == id).FirstOrDefault();
@@ -76,6 +78,7 @@ namespace Puc.Molic.Model
 				}
 			}
 		}
+		//find paths given the start and last nodes
 		public void findPath(int start, int last,
 							 String path, List<VisitedNode> visitedList)
 		{
@@ -114,6 +117,7 @@ namespace Puc.Molic.Model
 
 		}
 
+		//get all paths possible
 		public void allPath(int start, int last)
 		{
 

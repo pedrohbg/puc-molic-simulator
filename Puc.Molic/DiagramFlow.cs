@@ -29,7 +29,7 @@ namespace Puc.Molic
 
         }
 
-
+        //diagram object of "sistema banco" for tests and to help exporting XMLs (used in Program and Unit Tests)
         public Diagram GetDiagram()
         {
 
